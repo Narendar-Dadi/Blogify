@@ -7,8 +7,7 @@ const userRouter = require("./routes/user");
 const blogRoute = require("./routes/blog");
 const cookieParser = require("cookie-parser");
 const { checkForAuthentication } = require("./middleware/authentication");
-const PORT =process.env.PORT || 8000;
-
+const PORT = process.env.PORT || 8000;
 
 const Blog = require("./models/blog");
 
