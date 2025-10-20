@@ -9,6 +9,7 @@ const secret = process.env.SECRET_KEY;
 function createTokenForUser(user) {
   const payload = {
     _id: user._id,
+    fullname: user.fullname,
     email: user.email,
     profileImgaeUrl: user.profileImgaeUrl,
     role: user.role,
