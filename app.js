@@ -38,7 +38,7 @@ app.use("/user", userRouter);
 app.use("/blog", blogRoute);
 
 // !! REMOVED app.listen() FOR VERCEL !!
-// app.listen(PORT, () => console.log(`PORT Started at ${PORT}`));
+app.listen(PORT, () => console.log(`PORT Started at ${PORT}`));
 
 // !! ADDED module.exports FOR VERCEL !!
 module.exports = app;
