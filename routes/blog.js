@@ -6,9 +6,10 @@ const router = Router();
 const Blog = require("../models/blog");
 const Comment = require("../models/comment");
 
+// ...
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, path.resolve(`./public/uploads/`));
+    cb(null, path.resolve(`./public/uploads/`)); // <-- THIS WILL NOT WORK ON VERCEL
   },
   filename: function (req, file, cb) {
     const fileName = `${Date.now()}-${file.originalname}`;
@@ -16,7 +17,8 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage: storage });
+const upload = multer({ storage: storage }); // <-- THIS USES DISK STORAGE
+// ...
 
 router.get("/add-new", (req, res) => {
   return res.render("addBlog", {

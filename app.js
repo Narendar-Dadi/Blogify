@@ -17,9 +17,9 @@ app.use(checkForAuthentication("token"));
 
 mongoose
   .connect(process.env.MONGO_URL)
-  .then(() => console.log(`Server Started`))
+  .then(() => console.log(`MongoDB Connected`)) // Changed log message for clarity
   .catch((err) => {
-    console.log("Error", err);
+    console.log("MongoDB Connection Error", err);
   });
 app.set("view engine", "ejs");
 app.set("views", path.resolve("./views"));
@@ -37,4 +37,8 @@ app.get("/", async (req, res) => {
 app.use("/user", userRouter);
 app.use("/blog", blogRoute);
 
-app.listen(PORT, () => console.log(`PORT Started at ${PORT}`));
+// !! REMOVED app.listen() FOR VERCEL !!
+// app.listen(PORT, () => console.log(`PORT Started at ${PORT}`));
+
+// !! ADDED module.exports FOR VERCEL !!
+module.exports = app;
